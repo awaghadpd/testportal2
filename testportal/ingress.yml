@@ -20,3 +20,42 @@ spec:
                   number: 80
             pathType: Prefix
 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  #annotations:
+  #  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  name: walletdoc-portal
+spec:
+  selector:
+    app: walletdoc-portal
+  ports:
+    - port: 80
+      protocol: TCP
+  type: LoadBalancer
+
+---
+
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: walletdoc-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: walletdoc-portal
+  template:
+    metadata:
+      labels:
+        app: walletdoc-portal
+    spec:
+      containers:
+        - name: walletdoc-portal
+          image: wddevcontainerregistry.azurecr.io/walletdoc-portal:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
