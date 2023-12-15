@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  #annotations:
+  #  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  name: walletdoc-portal
+spec:
+  selector:
+    app: walletdoc-portal
+  ports:
+    - port: 80
+      protocol: TCP
+  type: LoadBalancer

@@ -1,0 +1,20 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: walletdoc-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: walletdoc-portal
+  template:
+    metadata:
+      labels:
+        app: walletdoc-portal
+    spec:
+      containers:
+        - name: walletdoc-portal
+          image: wddevcontainerregistry.azurecr.io/walletdoc-portal:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
