@@ -22,7 +22,7 @@ spec:
           - path: /testportal
             backend:
               service:
-                name: test-portal
+                name: nginx-service
                 port:
                   number: 80
             pathType: Prefix  
@@ -72,38 +72,34 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  #annotations:
-  #  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-  name: test-portal
+  name: nginx-service
 spec:
-  selector:
-    app: test-portal
-  ports:
-    - port: 80
-      protocol: TCP
   type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: nginx
 
 
 ---
 
 
-apiVersion : apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-portal
+  name: nginx-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-portal
+      app: nginx
   template:
     metadata:
       labels:
-        app: test-portal
+        app: nginx
     spec:
       containers:
-        - name: test-portal
-          image: nginx
-          ports:
-            - containerPort: 80
-              protocol: TCP
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
