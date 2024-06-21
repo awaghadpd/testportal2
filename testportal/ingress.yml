@@ -102,7 +102,7 @@ spec:
         app: test-portal
     spec:
       containers:
-        - name: walletdoc-portal
+        - name: test-portal
           image: nginx
           ports:
             - containerPort: 80
