@@ -20,5 +20,5 @@ steps:
 - task: Bash@3
   inputs:
     filePath: 'testportal/configure-ingress-controller.sh'
-    arguments: 'walletdoc3 ingress.yml'
+    arguments: 'walletdoc4 ingress.yml'
     workingDirectory: "testportal/"
