@@ -12,14 +12,14 @@ spec:
     - host: portal.walletdoc.tech
       http:
         paths:
-          - path: /walletdocportal
+          - path: /testportal
             backend:
               service:
                 name: walletdoc-portal
                 port:
                   number: 80
             pathType: Prefix
-          - path: /testportal
+          - path: /walletdocportal
             backend:
               service:
                 name: nginx-service
