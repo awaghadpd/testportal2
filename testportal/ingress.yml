@@ -12,13 +12,20 @@ spec:
     - host: portal.walletdoc.tech
       http:
         paths:
-          - path: /*
+          - path: /walletdocportal
             backend:
               service:
                 name: walletdoc-portal
                 port:
                   number: 80
             pathType: Prefix
+          - path: /testportal
+            backend:
+              service:
+                name: test-portal
+                port:
+                  number: 80
+            pathType: Prefix  
 
 
 ---
@@ -56,6 +63,47 @@ spec:
       containers:
         - name: walletdoc-portal
           image: wddevcontainerregistry.azurecr.io/walletdoc-portal:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  #annotations:
+  #  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  name: test-portal
+spec:
+  selector:
+    app: test-portal
+  ports:
+    - port: 80
+      protocol: TCP
+  type: LoadBalancer
+
+
+---
+
+
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: test-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-portal
+  template:
+    metadata:
+      labels:
+        app: test-portal
+    spec:
+      containers:
+        - name: walletdoc-portal
+          image: nginx
           ports:
             - containerPort: 80
               protocol: TCP
