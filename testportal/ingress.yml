@@ -9,23 +9,26 @@ metadata:
     appgw.ingress.kubernetes.io/health-probe-path: "/health"
 spec:
   rules:
-    - host: portal.walletdoc.tech
-      http:
-        paths:
-          - path: /testportal
-            backend:
-              service:
-                name: walletdoc-portal
-                port:
-                  number: 80
-            pathType: Prefix
-          - path: /walletdocportal
-            backend:
-              service:
-                name: nginx-service
-                port:
-                  number: 80
-            pathType: Prefix  
+  - host: portal.walletdoc.tech
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: walletdoc-portal
+            port:
+              number: 80
+        pathType: Prefix
+  - host: testportal.walletdoc.tech  # Separate hostname for /testportal
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+        pathType: Prefix 
 
 
 ---
