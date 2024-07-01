@@ -5,6 +5,17 @@ pool: 'WDKubePool'
 
 
 steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: 'latest'
+  displayName: 'Install Node.js'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      npm install @azure/msal-node  # Install the missing package
 - task: Kubernetes@1
   displayName: 'kubectl login'
   inputs:
