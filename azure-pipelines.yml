@@ -5,13 +5,7 @@ pool: 'WDKubePool'
 
 
 steps:
-- task: Kubernetes@1
-  displayName: 'kubectl login'
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'wddev-k8s service connection'
-    namespace: 'default'
-    command: login
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
