@@ -10,7 +10,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      npm install @azure/msal-node  # Install the missing package
+      echo "Current directory: $(pwd)"  # Print working directory
+      npm install @azure/msal-node
 
       
 - task: Kubernetes@1
