@@ -8,7 +8,7 @@ steps:
 
 - task: NodeTool@0
   inputs:
-    versionSpec: 'latest'
+    versionSpec: 'v22.3.0'
   displayName: 'Install Node.js'
 
 - task: Bash@3
