@@ -17,8 +17,7 @@ steps:
     script: |
       echo "Current directory: $(pwd)"  # Print working directory
       echo "Node.js version: $(node -v)"  # Print Node.js version (if installed)
-      npm install @azure/msal-node
-
+      npm install @azure/msal-node@2.10.1
       
 - task: Kubernetes@1
   displayName: 'kubectl login'
@@ -27,6 +26,7 @@ steps:
     kubernetesServiceEndpoint: 'wddev-k8s service connection'
     namespace: 'default'
     command: login
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
