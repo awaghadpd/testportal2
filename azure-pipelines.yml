@@ -6,20 +6,6 @@ pool: 'WDKubePool'
 
 steps:
 
-- task: NodeTool@0
-  inputs:
-    versionSpec: 'v22.4.0'
-  displayName: 'Install Node.js'
-
-      
-- task: Kubernetes@1
-  displayName: 'kubectl login'
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'wddev-k8s service connection'
-    namespace: 'default'
-    command: get
-
 - task: Bash@3
   inputs:
     targetType: 'inline'
