@@ -6,11 +6,17 @@ pool: 'WDKubePool'
 
 steps:
 
+- task: NodeTool@0
+  inputs:
+    versionSpec: 'latest'
+  displayName: 'Install Node.js'
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
       echo "Current directory: $(pwd)"  # Print working directory
+      echo "Node.js version: $(node -v)"  # Print Node.js version (if installed)
       npm install @azure/msal-node
 
       
