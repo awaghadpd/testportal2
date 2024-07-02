@@ -17,7 +17,7 @@ steps:
     script: |
       echo "Current directory: $(pwd)"  # Print working directory
       echo "Node.js version: $(node -v)"  # Print Node.js version (if installed)
-      npm install @azure/msal-node@2.10.1
+      npm install @azure/msal-node@2.10.0
       
 - task: Kubernetes@1
   displayName: 'kubectl login'
