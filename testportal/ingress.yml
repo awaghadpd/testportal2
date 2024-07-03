@@ -66,7 +66,7 @@ spec:
     spec:
       containers:
         - name: walletdoc-portal
-          image: wddevcontainerregistry.azurecr.io/walletdoc-portal:latest
+          image: redis
           ports:
             - containerPort: 80
               protocol: TCP
