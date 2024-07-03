@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: walletdoc-portal
+  name: walletdoc-portal1
   annotations:
     kubernetes.io/ingress.class: azure/application-gateway
     appgw.ingress.kubernetes.io/appgw-ssl-certificate: star-walletdoc-tech
@@ -16,7 +16,7 @@ spec:
       - path: /
         backend:
           service:
-            name: walletdoc-portal
+            name: walletdoc-portal1
             port:
               number: 80
         pathType: Prefix
@@ -42,7 +42,7 @@ metadata:
   name: walletdoc-portal
 spec:
   selector:
-    app: walletdoc-portal
+    app: walletdoc-portal1
   ports:
     - port: 80
       protocol: TCP
@@ -53,19 +53,19 @@ spec:
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: walletdoc-portal
+  name: walletdoc-portal1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: walletdoc-portal
+      app: walletdoc-portal1
   template:
     metadata:
       labels:
-        app: walletdoc-portal
+        app: walletdoc-portal1
     spec:
       containers:
-        - name: walletdoc-portal
+        - name: walletdoc-portal1
           image: redis
           ports:
             - containerPort: 80
