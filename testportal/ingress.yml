@@ -39,7 +39,7 @@ kind: Service
 metadata:
   #annotations:
   #  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-  name: walletdoc-portal
+  name: walletdoc-portal1
 spec:
   selector:
     app: walletdoc-portal1
