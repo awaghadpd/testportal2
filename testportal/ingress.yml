@@ -10,7 +10,7 @@ metadata:
     appgw.ingress.kubernetes.io/health-probe-path: "/health"
 spec:
   rules:
-  - host: portal.walletdoc.tech
+  - host: testportal.walletdoc.tech
     http:
       paths:
       - path: /
@@ -20,7 +20,7 @@ spec:
             port:
               number: 80
         pathType: Prefix
-  - host: testportal.walletdoc.tech  # Separate hostname for /testportal
+  - host: testportal1.walletdoc.tech  # Separate hostname for /testportal1
     http:
       paths:
       - path: /
