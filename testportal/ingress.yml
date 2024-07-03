@@ -71,13 +71,13 @@ spec:
             - containerPort: 80
               protocol: TCP
           livenessProbe: # Liveness probe for application health
-          httpGet:
-            path: /health  # Check the health endpoint at /health
-            port: 80  # Same port as the container port
-          initialDelaySeconds: 15  # Wait 15 seconds before starting the probe
-          periodSeconds: 20  # Repeat the probe every 20 seconds
-          timeoutSeconds: 5  # Fail the probe if it doesn't respond within 5 seconds
-          failureThreshold: 3  # Consider the container unhealthy after 3 consecutive failures
+            httpGet:
+              path: /health  # Check the health endpoint at /health
+              port: 80  # Same port as the container port
+            initialDelaySeconds: 15  # Wait 15 seconds before starting the probe
+            periodSeconds: 20  # Repeat the probe every 20 seconds
+            timeoutSeconds: 5  # Fail the probe if it doesn't respond within 5 seconds
+            failureThreshold: 3  # Consider the container unhealthy after 3 consecutive failures
 
 ---
 
