@@ -68,8 +68,9 @@ spec:
         - name: walletdoc-portal1
           image: redis
           ports:
-            - containerPort: 80
-              protocol: TCP
+          - containerPort: 80
+            protocol: TCP
+          command: ["sleep", "3000000"]
           livenessProbe: # Liveness probe for application health
             httpGet:
               path: /health  # Check the health endpoint at /health
@@ -115,6 +116,7 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+        command: ["sleep", "30000000"]
         livenessProbe: # Liveness probe for application health
           httpGet:
             path: /health  # Check the health endpoint at /health
