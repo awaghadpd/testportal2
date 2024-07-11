@@ -70,10 +70,9 @@ spec:
           ports:
           - containerPort: 80
             protocol: TCP
-          command: ["sleep", "3000000"]
           livenessProbe: # Liveness probe for application health
             httpGet:
-              path: /health  # Check the health endpoint at /health
+              path: /  # Check the health endpoint at /health
               port: 80  # Same port as the container port
             initialDelaySeconds: 15  # Wait 15 seconds before starting the probe
             periodSeconds: 20  # Repeat the probe every 20 seconds
@@ -116,10 +115,9 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
-        command: ["sleep", "30000000"]
         livenessProbe: # Liveness probe for application health
           httpGet:
-            path: /health  # Check the health endpoint at /health
+            path: /  # Check the health endpoint at /health
             port: 80  # Same port as the container port
           initialDelaySeconds: 15  # Wait 15 seconds before starting the probe
           periodSeconds: 20  # Repeat the probe every 20 seconds
