@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: echoserver
-        image: k8s.gcr.io/echoserver:1.4
+        image: nginx
         ports:
         - containerPort: 8080
         livenessProbe:
