@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: echoserver
-        image: nginx
+        image: wddevcontainerregistry.azurecr.io/b2b-front-end:latest
         ports:
         - containerPort: 8080
         livenessProbe:
