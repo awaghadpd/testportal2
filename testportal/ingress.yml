@@ -10,60 +10,57 @@ metadata:
     appgw.ingress.kubernetes.io/health-probe-path: "/health"
 spec:
   rules:
-  - host: testportal1.walletdoc.tech  # Separate hostname for /testportal1
+  - host: testportal.walletdoc.tech
     http:
       paths:
       - path: /
         backend:
           service:
-            name: echoserver-service
+            name: nginx-service
             port:
               number: 80
-        pathType: Prefix 
-
+        pathType: Prefix
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: echoserver-service
+  name: nginx-service
 spec:
   selector:
-    app: echoserver
+    app: nginx
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
   type: LoadBalancer
-
 
 
 ---
 
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: echoserver-deployment
+  name: nginx-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: echoserver
+      app: nginx
   template:
     metadata:
       labels:
-        app: echoserver
+        app: nginx
     spec:
       containers:
-      - name: echoserver
+      - name: nginx
         image: wddevcontainerregistry.azurecr.io/b2b-front-end:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         livenessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
