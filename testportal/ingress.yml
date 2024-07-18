@@ -10,7 +10,7 @@ metadata:
     appgw.ingress.kubernetes.io/health-probe-path: "/health"
 spec:
   rules:
-  - host: testportal.walletdoc.tech
+  - host: testportal1.walletdoc.tech
     http:
       paths:
       - path: /
