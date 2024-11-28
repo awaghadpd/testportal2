@@ -8,10 +8,6 @@ stages:
   - job: DeployDev
     steps:
     - checkout: self
-    - task: KubernetesManifest@1
-      inputs:
-        kubernetesServiceConnection: 'wddev-k8s service connection'
-
     - task: Bash@3
       inputs:
         targetType: 'inline'
@@ -30,10 +26,6 @@ stages:
   - job: DeployStaging
     steps:
     - checkout: self
-    - task: KubernetesManifest@1
-      inputs:
-        kubernetesServiceConnection: 'wddev-k8s service connection'
-
     - task: Bash@3
       inputs:
         targetType: 'inline'
@@ -52,10 +44,6 @@ stages:
   - job: DeployProd
     steps:
     - checkout: self
-    - task: KubernetesManifest@1
-      inputs:
-        kubernetesServiceConnection: 'wddev-k8s service connection'
-
     - task: Bash@3
       inputs:
         targetType: 'inline'
